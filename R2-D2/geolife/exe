@@ -1,0 +1,4 @@
+#!/bin/bash
+
+javac -d  bin -sourcepath src/ -cp ./:/mnt/disk_root_ori/home/xuying/proxim/6_pred_models/geolife/r2d2/time-0-200/lib/sqlitejdbc-v054.jar src/main/mytestthree.java
+java -cp bin:lib/sqlitejdbc-v054.jar -Xmx40000m main.mytestthree > xy_err2.log 2>&1

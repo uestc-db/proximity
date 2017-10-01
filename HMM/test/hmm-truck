@@ -1,0 +1,76 @@
+#!/bin/bash
+
+test_id=10000
+base_test_ts=50
+pred_num=20
+his_num=10
+read_real_rec=2100
+
+let M=$test_id
+let N=10
+let T=$base_test_ts
+
+####### may modify ###########
+xMin=$(echo '21.3' | bc -l)
+yMin=$(echo '102' | bc -l)
+xLen=$(echo '0.136837' | bc -l)
+yLen=$(echo '0.169925' | bc -l)
+
+start_iter=0
+end_iter=39
+
+dataset="truck"
+##############################
+
+input_folder="/home/xuying/proxim/6_pred_models/truck/hmm/test/input/"
+output_folder="/home/xuying/proxim/6_pred_models/truck/hmm/test/output/"
+
+grid_file="grids-1wid-2100ts-test.txt"
+data_file="curl_ipl_5s_1wid_2k1ts_test.txt"
+
+mat_a="mat_a_1w_5s_2kid.txt"
+mat_b="mat_b_1w_5s_2kid.txt"
+mat_pi="mat_pi_1w_5s_2kid.txt"
+rand_file="rand_1w.txt"
+
+test_name="$input_folder/$dataset/$grid_file"
+loc_name="$input_folder/$dataset/$data_file"
+mat_a_name="$input_folder/$dataset/$mat_a"
+mat_b_name="$input_folder/$dataset/$mat_b"
+mat_pi_name="$input_folder/$dataset/$mat_pi"
+rand_name="$input_folder/$dataset/$rand_file"
+
+num_args="$test_id $test_ts_start $test_ts_end $pred_num $his_num $read_real_rec"
+hmm_args="$M $N $T"
+grid_args="$xMin $yMin $xLen $yLen"
+infile_args="$test_name $loc_name $mat_a_name $mat_b_name $mat_pi_name $rand_name"
+outfile_args="$loss_name $time_name $out_file"
+
+echo $hmm_args 
+echo $grid_args 
+echo $infile_args 
+
+cd codes/$dataset
+g++ -g -std=c++11 main.cpp hmm.cpp predict.cpp -o main
+
+for i in $(seq $start_iter $end_iter)
+    do
+        let test_ts_start=base_test_ts*i
+        let test_ts_end=base_test_ts*i+base_test_ts+10
+		
+		let folder_start=base_test_ts*i
+		let folder_end=base_test_ts*i+base_test_ts
+		
+		loss_name="$output_folder/$dataset/loss/loss-$folder_start-$folder_end.txt"
+		time_name="$output_folder/$dataset/time/time-$folder_start-$folder_end.txt"
+		out_file="$output_folder/$dataset/$folder_start-$folder_end/hmm_${dataset}_"
+		
+		echo $num_args 
+		echo $outfile_args
+		
+#		./main $num_args $hmm_args $grid_args $infile_args $outfile_args
+#		./main
+		./main $test_id $test_ts_start $test_ts_end $pred_num $his_num $read_real_rec $M $N $T $xMin $yMin $xLen $yLen $test_name $loc_name $mat_a_name $mat_b_name $mat_pi_name $rand_name $loss_name $time_name $out_file
+#		./main $test_id $test_ts_start $test_ts_end $pred_num $his_num $read_real_rec
+    done
+

@@ -1,0 +1,14 @@
+-I/mnt/disk_root_ori/home/xuying/proxim/6_pred_models/singapore/rmf/libs/eigen-eigen
+-I/mnt/disk_root_ori/home/xuying/proxim/6_pred_models/singapore/rmf/build
+-I/usr/include/qt4
+-I/usr/include/qt4/QtOpenGL
+-I/usr/include/qt4/QtGui
+-I/usr/include/qt4/QtCore
+-I/usr/include/qt4
+-DEIGEN_PERMANENTLY_DISABLE_STUPID_WARNINGS
+-DQT_OPENGL_LIB
+-DQT_GUI_LIB
+-DQT_CORE_LIB
+-o
+/mnt/disk_root_ori/home/xuying/proxim/6_pred_models/singapore/rmf/build/demos/opengl/quaternion_demo.moc
+/mnt/disk_root_ori/home/xuying/proxim/6_pred_models/singapore/rmf/libs/eigen-eigen/demos/opengl/quaternion_demo.h

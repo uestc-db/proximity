@@ -1,0 +1,8 @@
+50 iters, the whole time: 2371041317047, the pred num: 1131613892, the avg time: 2095.2741335266323
+50 iters, the whole time: 2824002599356, the pred num: 1848838374, the avg time: 1527.4469845875235
+50 iters, the whole time: 3133399207759, the pred num: 822386097, the avg time: 3810.1315418504696
+50 iters, the whole time: 2760049140608, the pred num: -931180745, the avg time: -2964.0315861642953
+100 iters, the whole time: 45922773882271, the pred num: 1503577054, the avg time: 30542.34816905566
+100 iters, the whole time: 16829062305985, the pred num: -455037302, the avg time: -36983.9180920271
+100 iters, the whole time: 23446851780862, the pred num: -856748793, the avg time: -27367.242268016827
+100 iters, the whole time: 29124404072548, the pred num: -1501691875, the avg time: -19394.39412132932

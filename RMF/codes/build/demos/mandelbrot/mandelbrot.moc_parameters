@@ -1,0 +1,8 @@
+-I/mnt/disk_root_ori/home/xuying/proxim/6_pred_models/singapore/rmf/libs/eigen-eigen
+-I/mnt/disk_root_ori/home/xuying/proxim/6_pred_models/singapore/rmf/build
+-I/usr/include/qt4
+-DEIGEN_PERMANENTLY_DISABLE_STUPID_WARNINGS
+-DNDEBUG
+-o
+/mnt/disk_root_ori/home/xuying/proxim/6_pred_models/singapore/rmf/build/demos/mandelbrot/mandelbrot.moc
+/mnt/disk_root_ori/home/xuying/proxim/6_pred_models/singapore/rmf/libs/eigen-eigen/demos/mandelbrot/mandelbrot.h

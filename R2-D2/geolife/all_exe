@@ -1,0 +1,6 @@
+#!/bin/bash
+
+gnuplot ev_total.plt
+gnuplot nf_total.plt
+gnuplot ns_total.plt
+gnuplot ms_total.plt

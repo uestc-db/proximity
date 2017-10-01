@@ -1,0 +1,31 @@
+#!/bin/bash
+
+start_iter=1210
+max_iter=1310
+
+bas_pred_num=10
+num_objects=10000
+
+dataset="geolife"
+
+input_file="/mnt/disk1/xuying/proxim/0_all_data/$dataset/new_data/curl_ipl_5s_1wid_2k1ts_test.txt"
+
+
+for i in $(seq 1 3)
+do
+	let pred_num=i*$bas_pred_num
+	output_file="../../output/$dataset/pred_$pred_num/rmf_${dataset}_"
+
+	echo "start_iter"
+	echo "max_iter"
+	echo "pred_num"
+	echo "num_objects"
+	echo "input_file"
+	echo "output_file"
+
+	cd codes/
+	g++ -I libs/eigen-eigen main.cc test.cc rmf.cc -o main
+	./main $start_iter $max_iter $pred_num $num_objects $input_file $output_file
+	
+	cd ..
+done

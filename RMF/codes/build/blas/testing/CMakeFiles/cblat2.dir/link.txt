@@ -1,0 +1,1 @@
+/usr/bin/gfortran     -O3 CMakeFiles/cblat2.dir/cblat2.f.o  -o cblat2 -rdynamic ../libeigen_blas.so -Wl,-rpath,/mnt/disk_root_ori/home/xuying/proxim/6_pred_models/singapore/rmf/build/blas 

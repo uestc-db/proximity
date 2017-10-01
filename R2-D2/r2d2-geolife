@@ -1,0 +1,42 @@
+#!/bin/bash
+
+alg="r2d2"
+base=1200
+bas_prd_num=10
+
+let t_period=100
+let sampleLen=110
+
+dataset="geolife"
+input_file="/mnt/disk1/xuying/proxim/0_all_data/$dataset/new_data/curl-ipl-1wid-db.db"
+table_name=$dataset
+
+cd $dataset
+
+for i in $(seq 1 3)
+    do
+		let prd_num=i*$bas_prd_num
+	
+        let st=$base
+        let ed=$st+$t_period
+        let time_st=$st
+        let time_ed=$ed+10
+		
+		out_folder="../../output/$dataset/pred_$prd_num/$alg_${dataset}_"
+		
+		echo "In .sh: t_period   = ${t_period}"
+		echo "In .sh: sampleLen  = ${sampleLen}"
+		echo "In .sh: st         = ${st}"
+		echo "In .sh: ed         = ${ed}"
+		echo "In .sh: time_st    = ${time_st}"
+		echo "In .sh: time_ed    = ${time_ed}"
+		echo "In .sh: prd_num    = ${prd_num}"
+		echo "In .sh: input_file = ${input_file}"
+		echo "In .sh: table_name = ${table_name}"
+		echo "In .sh: out_folder = ${out_folder}"
+		
+		javac -d  bin -sourcepath src/ -cp ./:/mnt/disk1/xuying/proxim/6_pred_models/diff_steps_test/$alg/$dataset/lib/sqlitejdbc-v054.jar src/main/mytestthree.java
+		java -cp bin:lib/sqlitejdbc-v054.jar -Xmx40000m main.mytestthree ${t_period} ${sampleLen} ${st} ${ed} ${time_st} ${time_ed} ${prd_num} ${input_file} ${table_name}  ${out_folder}
+
+    done
+
